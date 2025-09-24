@@ -1,41 +1,35 @@
-//====Variables=====//
-var arreglo = [1, 2, 3, 4, 5];
-var entero = 1;
-var cadena_texto = "Hola Mundo";
-var booleano = true;
+// Obtener elementos del DOM
+var seeAllPostsBtn = document.getElementById("see-all-posts");
+var postsContainer = document.getElementById("posts-container");
 
-//===Constantes====//
-const PI = 3.1416;
-
-
-//====Funciones====//
-function suma(x, y){
-    var resultado = x + y;
-    console.log("El resultado de la suma es: " + resultado);
-    return resultado;
-}
-
-function imprimirMensaje(mensaje){
-    console.log("Este es mi mensaje " + mensaje);
-}
-
-imprimirMensaje("Hola");
-imprimirMensaje("Vacaciones 1 semana :D");
-imprimirMensaje(true);
-
-suma(1, 2);
-suma(10, 20);
-suma(100, 200);
-
-
-//===Elementos de la pagina como variables===///
-var botonBuscar = document.getElementById("buscar");
-
-console.log(botonBuscar);
-
-//==== Eventos===== //
-botonBuscar.addEventListener("click", function(){
-    //alert("Hiciste clic al boton");
-    botonBuscar.classList.add("rojo");
+// Evento para mostrar/ocultar los posts al hacer clic en "See all posts →"
+seeAllPostsBtn.addEventListener("click", function(event) {
+    event.stopPropagation(); // Evita que el evento se propague al documento
+    
+    if(postsContainer.classList.contains("ocultar")) {
+        postsContainer.classList.remove("ocultar");
+        postsContainer.classList.add("mostrar");
+    } else {
+        postsContainer.classList.remove("mostrar");
+        postsContainer.classList.add("ocultar");
+    }
 });
 
+// Cerrar el menú de posts al hacer clic en cualquier parte de la página
+document.addEventListener("click", function() {
+    if(postsContainer.classList.contains("mostrar")) {
+        postsContainer.classList.remove("mostrar");
+        postsContainer.classList.add("ocultar");
+    }
+});
+
+// Evitar que el menú se cierre al hacer clic dentro deel
+postsContainer.addEventListener("click", function(event) {
+    event.stopPropagation();
+});
+
+//Evento para la sección "mas" (opcional)
+var mas = document.getElementById("mas");
+mas.addEventListener("click", function() {
+    console.log("Hiciste click en la sección Best Of The Week");
+});
