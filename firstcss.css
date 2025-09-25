@@ -21,31 +21,30 @@ body.dark-mode .img-subtitle,
 body.dark-mode .img-text,
 body.dark-mode .posts-container,
 body.dark-mode .post,
-body.dark-mode .secondminiimg-button {
+body.dark-mode .secondminiimg-button,
+body.dark-mode .input-container .search-input,
+body.dark-mode .greenimg-title,
+body.dark-mode .greenimg-title,
+body.dark-mode .greenimgplus-button,
+body.dark-mode .greenbutton-title {
     background-color: #2d2d2d;
     color: #ffffff;
-    
 }
-
 body.dark-mode button {
     color: #ffffff;
     border-color: #ffffff;
 }
-
 body.dark-mode .icon-btn {
     background-color: #2c2c2c;
     border: 2px solid #ffffff;
 }
-
 body.dark-mode .posts-container {
     border: 1px solid #444444;
     box-shadow: 0 4px 8px rgba(0,0,0,0.3);
 }
-
 body.dark-mode .post {
     border-bottom: 1px solid #444444;
 }
-
 body.dark-mode .post:hover {
     background: #3d3d3d;
 }
@@ -291,6 +290,22 @@ button {
     background: rgb(255, 255, 255);
     border: 2px solid black;
     
+}
+.input-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
+}
+
+.input-container .search-input {
+    border-radius: 99px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 0.15);
+    outline: none;
+    transition: 0.25s border;
+    color: rgb(0, 0, 0);
+    padding: 10px 16px;
 }
 
 .menu-btn {  

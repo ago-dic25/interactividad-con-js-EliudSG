@@ -1,25 +1,34 @@
 document.addEventListener('DOMContentLoaded', function() {
-    console.log("DOM cargado - JavaScript funcionando");
     var seeAllPostsBtn = document.getElementById("see-all-posts");
     var postsContainer = document.getElementById("posts-container");
     var themeToggleBtn = document.getElementById("themeToggle");
-    var themeIcon = document.querySelector('.theme-icon');    
-    console.log("Elementos del DOM encontrados correctamente");
-    
+    var themeIcon = document.querySelector('.theme-icon');   
+    let sumClick = 0;
+    const increment = document.querySelector(".greenimgplus-button");
+    const plusplus = document.getElementById("plusplus");
+
+    increment.addEventListener('click', () => {
+        sumClick++;
+
+        const sum = `
+            <div class="item">
+                ${sumClick}
+            </div>
+        `;
+
+        plusplus.innerHTML = sum;
+    });
+
+
     // Función para cambiar entre modo oscuro y claro
     function toggleDarkMode() {
-        console.log("Botón de tema clickeado");
-        // Alternar la clase dark-mode en el body
         document.body.classList.toggle('dark-mode');
-        // Cambiar el icono según el modo
         if (document.body.classList.contains('dark-mode')) {
             themeIcon.textContent = '🌙'; 
             localStorage.setItem('theme', 'dark');
-            console.log("Modo oscuro activado");
         } else {
             themeIcon.textContent = '☀️';
             localStorage.setItem('theme', 'light');
-            console.log("Modo claro activado");
         }
     }
     themeToggleBtn.addEventListener('click', toggleDarkMode);
