@@ -1,41 +1,49 @@
-//====Variables=====//
-var arreglo = [1, 2, 3, 4, 5];
-var entero = 1;
-var cadena_texto = "Hola Mundo";
-var booleano = true;
+document.addEventListener('DOMContentLoaded', function() {
+    var seeAllPostsBtn = document.getElementById("see-all-posts");
+    var postsContainer = document.getElementById("posts-container");
+    var themeToggleBtn = document.getElementById("themeToggle");
+    var themeIcon = document.querySelector('.theme-icon');   
+    let sumClick = 0;
+    const increment = document.querySelector(".greenimgplus-button");
+    const plusplus = document.getElementById("plusplus");
 
-//===Constantes====//
-const PI = 3.1416;
+    increment.addEventListener('click', () => {
+        sumClick++;
 
+        const sum = `
+            <div class="item">
+                ${sumClick}
+            </div>
+        `;
 
-//====Funciones====//
-function suma(x, y){
-    var resultado = x + y;
-    console.log("El resultado de la suma es: " + resultado);
-    return resultado;
-}
-
-function imprimirMensaje(mensaje){
-    console.log("Este es mi mensaje " + mensaje);
-}
-
-imprimirMensaje("Hola");
-imprimirMensaje("Vacaciones 1 semana :D");
-imprimirMensaje(true);
-
-suma(1, 2);
-suma(10, 20);
-suma(100, 200);
+        plusplus.innerHTML = sum;
+    });
 
 
-//===Elementos de la pagina como variables===///
-var botonBuscar = document.getElementById("buscar");
-
-console.log(botonBuscar);
-
-//==== Eventos===== //
-botonBuscar.addEventListener("click", function(){
-    //alert("Hiciste clic al boton");
-    botonBuscar.classList.add("rojo");
+    // Función para cambiar entre modo oscuro y claro
+    function toggleDarkMode() {
+        document.body.classList.toggle('dark-mode');
+        if (document.body.classList.contains('dark-mode')) {
+            themeIcon.textContent = '🌙'; 
+            localStorage.setItem('theme', 'dark');
+        } else {
+            themeIcon.textContent = '☀️';
+            localStorage.setItem('theme', 'light');
+        }
+    }
+    themeToggleBtn.addEventListener('click', toggleDarkMode);
+    if (seeAllPostsBtn && postsContainer) {
+        seeAllPostsBtn.addEventListener("click", function(event) {
+            event.stopPropagation();
+            
+            if(postsContainer.classList.contains("ocultar")) {
+                postsContainer.classList.remove("ocultar");
+                postsContainer.classList.add("mostrar");
+            } else {
+                postsContainer.classList.remove("mostrar");
+                postsContainer.classList.add("ocultar");
+            }
+        });
+        
+    }
 });
-
